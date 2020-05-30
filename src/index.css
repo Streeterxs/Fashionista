@@ -12,6 +12,9 @@ code {
     monospace;
 }
 
+
+/* Flexbox */
+
 .display-flex {
   display: flex;
 }
@@ -44,6 +47,22 @@ code {
   justify-content: flex-start;
 }
 
-.pad-1 {
-  padding: 1rem;
+/* Paddings */
+
+.padx-1 {
+  padding: 0 1rem;
 }
+
+.padx-2 {
+  padding: 0 1.2rem;
+}
+
+.padx-3 {
+  padding: 0 1.5rem;
+}
+
+.padx-4 {
+  padding: 0 2rem;
+}
+
+/* Margins */
