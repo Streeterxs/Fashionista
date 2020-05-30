@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import { Header } from "./Header";
 import SideSearch from './SideModal/SideModal';
+import Search from './Search/Search';
 
 const Layout = ({children}: any) => {
     const [showSearch, setShowSearch] = useState(false);
@@ -24,7 +25,7 @@ const Layout = ({children}: any) => {
             </article>
             {
                 showSearch ?
-                <SideSearch showModal={showSearch} clickBackdrop={() => handleClickBackdrop(setShowSearch)}/> :
+                <Search showSearch={showSearch} closeSearch={() => handleClickBackdrop(setShowSearch)}/> :
                 null
             }
         </>

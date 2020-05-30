@@ -7,6 +7,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -48,24 +52,44 @@ code {
 }
 
 /* Paddings */
+  /* x */
+    .padx-1 {
+      padding: 0 1rem;
+    }
 
-.padx-1 {
-  padding: 0 1rem;
-}
+    .padx-2 {
+      padding: 0 1.2rem;
+    }
 
-.padx-2 {
-  padding: 0 1.2rem;
-}
+    .padx-3 {
+      padding: 0 1.5rem;
+    }
 
-.padx-3 {
-  padding: 0 1.5rem;
-}
+    .padx-4 {
+      padding: 0 2rem;
+    }
+  /* y */
+    .pady-1 {
+      padding: 1rem 0;
+    }
 
-.padx-4 {
-  padding: 0 2rem;
-}
+    .pady-2 {
+      padding: 1.2rem 0;
+    }
+
+    .pady-3 {
+      padding: 1.5rem 0;
+    }
+
+    .pady-4 {
+      padding: 2rem 0;
+    }
+
 
 /* Margins */
+.marr-1 {
+  margin-right: 1rem;
+}
 
 /* cursors */
 .cursor-pointer {
