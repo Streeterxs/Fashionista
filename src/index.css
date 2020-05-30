@@ -66,3 +66,13 @@ code {
 }
 
 /* Margins */
+
+/* cursors */
+.cursor-pointer {
+  cursor: pointer
+}
+
+/* box */
+.border-box {
+  box-sizing: border-box
+}

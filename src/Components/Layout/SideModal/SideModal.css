@@ -1,0 +1,12 @@
+.side-modal {
+    background-color: white;
+    padding: 2rem;
+    height: 100%;
+    width: 25%;
+    box-sizing: border-box;
+}
+
+.side-modal-wrapper{
+    height: 100%;
+    width: 100%;
+}
