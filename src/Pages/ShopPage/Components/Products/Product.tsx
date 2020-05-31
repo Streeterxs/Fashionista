@@ -1,6 +1,10 @@
 import React from 'react';
+import { Product as ProductValue } from '../../../../Store/product';
 
-const Product = () => {
+type ProductProps = {
+    product: ProductValue
+}
+const Product = ({product}: ProductProps) => {
     return (
         <div>
             sing product

@@ -1,1 +1,1 @@
-export {getProducts} from './api';
+export {fetchProducts} from './api';
