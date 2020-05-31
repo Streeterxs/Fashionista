@@ -3,10 +3,11 @@ import React, { useState } from 'react';
 import { Header } from "./Header";
 import SideSearch from './SideModal/SideModal';
 import Search from './Search/Search';
+import Cart from './Cart/Cart';
 
 const Layout = ({children}: any) => {
     const [showSearch, setShowSearch] = useState(false);
-    const [showBag, setShowBag] = useState(false);
+    const [showCart, setShowCart] = useState(false);
 
     const handleClickBackdrop = (setFn: (bool: boolean) => void) => {
         setFn(false);
@@ -18,7 +19,10 @@ const Layout = ({children}: any) => {
                 <Header searchClick={()=> setShowSearch(prev => {
                     console.log('prev: ', prev);
                     return !prev
-                })} bagClick={() => 'testing 2'}/>
+                })} cartClick={() => setShowCart(prev => {
+                    console.log('prev: ', prev)
+                    return !prev
+                })}/>
             </div>
             <article>
                 {children}
@@ -26,6 +30,11 @@ const Layout = ({children}: any) => {
             {
                 showSearch ?
                 <Search showSearch={showSearch} closeSearch={() => handleClickBackdrop(setShowSearch)}/> :
+                null
+            }
+            {
+                showCart ?
+                <Cart showCart={showCart} closeCart={() => handleClickBackdrop(setShowCart)}/> :
                 null
             }
         </>

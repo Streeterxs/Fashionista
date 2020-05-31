@@ -2,10 +2,10 @@ import React from 'react'
 
 type HeaderProps = {
     searchClick: () => void,
-    bagClick: () => void
+    cartClick: () => void
 };
 
-const Header = ({searchClick, bagClick}: HeaderProps) => {
+const Header = ({searchClick, cartClick}: HeaderProps) => {
     return (
         <nav className="display-flex justify-spaced align-center padx-1 nav__logo border-box">
             <div>
@@ -14,7 +14,7 @@ const Header = ({searchClick, bagClick}: HeaderProps) => {
 
             <ul className="display-flex justify-center align-center nav__list">
                 <li className="cursor-pointer" onClick={searchClick}>Search</li>
-                <li className="cursor-pointer" onClick={bagClick}>bag</li>
+                <li className="cursor-pointer" onClick={cartClick}>bag</li>
             </ul>
         </nav>
     )
