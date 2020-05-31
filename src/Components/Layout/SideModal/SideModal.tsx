@@ -10,7 +10,7 @@ type SideModalProps = {
     showModal: boolean,
     closeModal: () => void,
     headerContent: string | JSX.Element,
-    children?: string | (() => JSX.Element)
+    children?: string | JSX.Element
 };
 
 const SideModal = ({showModal, closeModal, headerContent, children}: SideModalProps) => {
