@@ -11,11 +11,11 @@ function App() {
   return (
     <div className="App">
       <Provider store={store}>
-        <Layout>
-          <BrowserRouter>
-            <Routes/>
-          </BrowserRouter>
-        </Layout>
+        <BrowserRouter>
+          <Layout>
+              <Routes/>
+          </Layout>
+        </BrowserRouter>
       </Provider>
     </div>
   );

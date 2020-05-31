@@ -24,14 +24,11 @@ const ShopPage = () => {
 
     return (
         <div>
-            shop page
-            <div>
-                {
-                    productsReducer && productsReducer.length > 0 ?
-                    <Products products={productsReducer as Product[]}/> :
-                    null
-                }
-            </div>
+            {
+                productsReducer && productsReducer.length > 0 ?
+                <Products products={productsReducer as Product[]}/> :
+                null
+            }
         </div>
     );
 };

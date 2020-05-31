@@ -1,0 +1,26 @@
+.product{
+    margin: 1rem 0.2rem;
+    font-size: 0.8rem;
+    color: #212529;
+    position: relative;
+}
+
+.product__discount {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: #212529;
+    color: white;
+    padding: 0.05rem 0.2rem;
+}
+
+.product__image-wrapper{
+}
+
+.product_image{
+    max-width: 100%;
+}
+
+a {
+    text-decoration: none;
+}

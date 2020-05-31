@@ -24,7 +24,7 @@ const Layout = ({children}: any) => {
                     return !prev
                 })}/>
             </div>
-            <article>
+            <article className="container">
                 {children}
             </article>
             {
