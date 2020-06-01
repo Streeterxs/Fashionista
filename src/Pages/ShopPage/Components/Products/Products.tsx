@@ -17,8 +17,8 @@ const Products = ({products}: ProductsProps) => {
             {
                 products && products.length > 0 ?
                 products.map((productValue, index) => 
-                <div className="flex-basis-25">
-                    <Product key={index} product={productValue}/>
+                <div className="flex-basis-25" key={index}>
+                    <Product product={productValue}/>
                 </div>)
                     :
                 null

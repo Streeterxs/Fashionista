@@ -18,3 +18,24 @@ a {
     list-style: none;
     font-size: 1.2rem;
 }
+
+.nav__cart-badge-wrapper {
+    top: 0;
+    right: 0;
+    position: absolute;
+    color: white;
+    padding: 0.2rem;
+}
+.nav__cart-badge {
+    left: 0;
+    position: absolute;
+    height: 2.7vh;
+    width: 2.7vh;
+    color: white;
+    font-size: 0.55rem;
+    background-color: #cf3838;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

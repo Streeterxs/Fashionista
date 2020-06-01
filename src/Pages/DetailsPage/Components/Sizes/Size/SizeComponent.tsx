@@ -6,13 +6,13 @@ import './SizeComponent.css'
 
 type SizeProps = {
     sizeObj: Size,
-    handleSizeClick: (sizeSku: string) => void,
+    handleSizeClick: (sizeSku: Size) => void,
     selected: boolean
 };
 
 const SizeComponent = ({sizeObj, handleSizeClick, selected}: SizeProps) => {
     return (
-        <button className={`size-button ${selected ? 'selected' : ''}`} onClick={() => handleSizeClick(sizeObj.sku)}>
+        <button className={`size-button ${selected ? 'selected' : ''}`} onClick={() => handleSizeClick(sizeObj)}>
             <b>
                 {sizeObj.size}
             </b>

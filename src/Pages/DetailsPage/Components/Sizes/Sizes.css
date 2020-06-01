@@ -3,4 +3,5 @@ ul.size-list {
     list-style: none;
     justify-content: flex-start;
     padding: 0;
+    margin: 0.5rem 0;
 }

@@ -7,9 +7,15 @@ import { setProductsApi, getProduct } from '../../Store/Actions';
 import { Product } from '../../Store/product';
 import { Sizes } from './Components';
 import './DetailsPage.css'
+import { Size } from '../../Store/size';
+import { ProductSelected } from '../../Store/productSelected';
+import { addToCart } from '../../Store/Actions/CartActions/CartActions';
 
 const DetailsPage = () => {
-    const [productFinded, setProductFinded] = useState<Product>();
+    const [productFinded, setProductFinded] = useState<Product | null>();
+    const [productSelected, setProductSelected] = useState<ProductSelected>();
+    const [showError, setShowError] = useState<boolean>(false);
+
     const {identifier} = useParams();
 
     const dispatch = useDispatch();
@@ -27,16 +33,32 @@ const DetailsPage = () => {
             return;
         }
 
-        if(!productsReducer.productFinded) {
+        if(!productsReducer.productFinded || productsReducer.productFinded.style !== identifier) {
             dispatch(getProduct(identifier));
             return;
         };
 
         setProductFinded(productsReducer.productFinded);
-    }, [productsReducer]);
+    }, [productsReducer, identifier]);
 
     const handleAddToCart = () => {
-        console.log('add to cart!!');
+        if (!productSelected) {
+            setShowError(true);
+            return;
+        }
+
+        dispatch(addToCart(productSelected));
+    }
+
+    const productSelection = (size: Size) => {
+        const productCopy: Product = {...(productFinded as Product)};
+        delete productCopy.sizes;
+
+        setProductSelected({
+            ...productCopy,
+            sizeSelected: size,
+            quantity: 1
+        });
     }
 
     return (
@@ -51,9 +73,17 @@ const DetailsPage = () => {
                     </h3>
                     <p><b>{productFinded ? productFinded.regular_price : ''}</b> em até {productFinded ? productFinded.installments : ''}</p>
                 </div>
+                <p className="marb-0">Escolha o tamanho</p>
+                {
+                    !productSelected && showError ? 
+                    <p className="mary-1">
+                        É necessário escolher um tamanho
+                    </p> :
+                    null
+                }
                 {
                     productFinded ?
-                    <Sizes sizes={productFinded.sizes}/> :
+                    <Sizes handleSizeSelected={productSelection} sizes={productFinded.sizes}/> :
                     null
                 }
                 <div>
