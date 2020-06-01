@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { Product } from '../../Store/product';
 import { RootState } from '../../Store/store';
-import { getProducts } from '../../Store/Actions';
 import { Products } from '.';
+import { setProductsApi } from '../../Store/Actions/ProductsActions/ProductsActions';
 
 const ShopPage = () => {
     const dispatch = useDispatch();
@@ -17,16 +16,16 @@ const ShopPage = () => {
     useEffect(() => {
         console.log('rendered');
         const fetch = async () => {
-            await dispatch(await getProducts());
+            await dispatch(await setProductsApi());
         };
-        fetch();
+        if ((productsReducer.productList).length <= 0) fetch();
     }, [dispatch]);
 
     return (
         <div>
             {
-                productsReducer && productsReducer.length > 0 ?
-                <Products products={productsReducer as Product[]}/> :
+                productsReducer && (productsReducer.productList).length > 0 ?
+                <Products products={productsReducer.productList}/> :
                 null
             }
         </div>

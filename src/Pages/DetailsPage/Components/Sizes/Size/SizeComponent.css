@@ -1,0 +1,15 @@
+button.size-button {
+    padding: 0.5rem;
+    background-color: transparent;
+    color: black;
+    font-size: 1rem;
+    border: 1px solid #dfdfdf;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    outline: none;
+}
+
+button.selected{
+    background-color: #212529;
+    color: white;
+}

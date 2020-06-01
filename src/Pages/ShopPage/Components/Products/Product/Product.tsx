@@ -9,7 +9,7 @@ type ProductProps = {
 }
 const Product = ({product}: ProductProps) => {
     return (
-        <Link to={`/details/${product.color_slug}`}>
+        <Link to={`/details/${product.style}`}>
             <div className="product">
                 <div className="product__image-wrapper">
                     <img className="product_image" src={product.image} alt={product.name}/>

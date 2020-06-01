@@ -1,2 +1,2 @@
-export { getProducts, setProducts } from './ProductsActions';
+export * from './ProductsActions';
 export { ProductsActionsTypes } from './ProductsActionsTypes';

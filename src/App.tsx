@@ -3,7 +3,6 @@ import {BrowserRouter} from 'react-router-dom';
 import { Provider } from 'react-redux'
 
 import { Layout } from './Components';
-import './App.css';
 import Routes from './Routes';
 import { store } from './Store';
 

@@ -1,0 +1,6 @@
+ul.size-list {
+    display: flex;
+    list-style: none;
+    justify-content: flex-start;
+    padding: 0;
+}

@@ -1,4 +1,6 @@
 export enum ProductsActionsTypes {
     GET_PRODUCTS,
-    SET_PRODUCTS
+    GET_PRODUCT,
+    SET_PRODUCTS,
+    SET_PRODUCTS_API
 }
