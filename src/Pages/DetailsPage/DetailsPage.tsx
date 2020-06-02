@@ -33,7 +33,7 @@ const DetailsPage = () => {
             return;
         }
 
-        if(!productsReducer.productFinded || productsReducer.productFinded.style !== identifier) {
+        if(!productsReducer.productFinded || productsReducer.productFinded.code_color !== identifier) {
             dispatch(getProduct(identifier));
             return;
         };
@@ -62,9 +62,9 @@ const DetailsPage = () => {
     }
 
     return (
-        <div className="display-flex flex-wrap-reverse justify-center padx-5 pady-4">
-            <div className="marx-1 flex-basis-25">
-                <img src={productFinded ? productFinded.image : ''}></img>
+        <div className="display-flex flex-wrap-reverse justify-center pady-4">
+            <div className="marx-1">
+                <img className="image-detail" src={productFinded ? productFinded.image : ''}></img>
             </div>
             <div className="marx-1 flex-basis-25">
                 <div>

@@ -20,7 +20,7 @@ export function productsReducer(state = INITIAL_STATE, action: ProductsActions) 
             console.log('state: ', state);
             return {
                 ...state,
-                productFinded: state.productList.find(product => product.style === action.style)
+                productFinded: state.productList.find(product => product.code_color === action.code_color)
             };
 
         case ProductsActionsTypes.SET_PRODUCTS:

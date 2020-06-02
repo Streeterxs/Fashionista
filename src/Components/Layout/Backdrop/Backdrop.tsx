@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './Backdrop.css'
+import './Backdrop.css';
 
 const Backdrop = ({show, clicked, children}: any) => {
     return (

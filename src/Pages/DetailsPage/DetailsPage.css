@@ -11,3 +11,8 @@ button.add-cart__button {
     cursor: pointer;
     margin-top: 1.5rem;
 }
+
+.image-detail {
+    max-width: 100%;
+    height: auto;
+}

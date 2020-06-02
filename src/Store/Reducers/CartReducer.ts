@@ -29,7 +29,7 @@ export function cartReducer(state = INITIAL_STATE, action: CartActions) {
 
             return {
                 ...state,
-                totalCost: +(state.totalCost + price).toFixed(2),
+                totalCost: state.totalCost + price,
                 totalProductSelected: state.productsSelected.reduce((acc, crr) => {
                     return acc + crr.quantity
                 }, 0)
@@ -42,5 +42,5 @@ export function cartReducer(state = INITIAL_STATE, action: CartActions) {
 }
 
 function formatedPriceStringToNumber(formatedString: string) {
-    return +(+formatedString.split(' ')[1].replace(',', '.')).toFixed(2)
+    return +formatedString.split(' ')[1].replace(',', '.')
 }

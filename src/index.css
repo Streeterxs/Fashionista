@@ -99,6 +99,10 @@ code {
     flex-basis: 30%
   }
   
+  .flex-basis-third {
+    flex-basis: 33.33%
+  }
+  
   .flex-basis-40 {
     flex-basis: 40%
   }
@@ -291,3 +295,34 @@ code {
 .pos-relative {
   position: relative;
 }
+
+/* Text */
+
+.muted {
+  font-size: 0.8rem;
+  color: #a7a7a7;
+}
+
+.center {
+  text-align: center;
+}
+
+
+/* Overflow */
+
+.hidden {
+  overflow: hidden;
+}
+
+  /* Y */
+  .overflowy-hidden {
+    overflow-y: hidden
+  }
+
+  .overflowy-scroll {
+    overflow-y: scroll
+  }
+
+  .overflowy-auto {
+    overflow-y: hidden
+  }

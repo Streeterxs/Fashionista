@@ -5,7 +5,7 @@ import { fetchProducts } from "../../../Services";
 export type ProductsActions = {
     type: ProductsActionsTypes,
     products?: Product[],
-    style?: string
+    code_color?: string
 }
 
 export const getProducts = () => {
@@ -17,7 +17,7 @@ export const getProducts = () => {
 export const getProduct = (styleIdentifier: string) => {
     return {
         type: ProductsActionsTypes.GET_PRODUCT,
-        style: styleIdentifier
+        code_color: styleIdentifier
     }
 }
 

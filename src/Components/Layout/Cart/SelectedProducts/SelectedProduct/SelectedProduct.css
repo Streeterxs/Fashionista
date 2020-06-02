@@ -1,0 +1,30 @@
+.selected-product__image-wrapper {
+    width: 100%;
+}
+
+img.selected-product__image {
+    max-width: 100%;
+    height: auto;
+}
+
+.product-quantity__manager {
+    font-size: 1rem;
+    padding: 0 1rem;
+}
+
+.button__qnt-manager {
+    color: #212529;
+    cursor: pointer;
+    font-size: 1.5rem;
+    border: none;
+}
+
+.product-name {
+    font-size: 0.8rem;
+}
+
+.remover-button {
+    font-size: 0.8rem;
+    color: red;
+    cursor: pointer;
+}
