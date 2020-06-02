@@ -8,11 +8,14 @@ export type CartState = {
     totalProductSelected: number;
 };
 
-const INITIAL_STATE: CartState = {
-    productsSelected: [],
-    totalCost: 0,
-    totalProductSelected: 0
-};
+const INITIAL_STATE: CartState = 
+    localStorage.getItem(process.env.REACT_APP_LOCAL_CART as string) ? 
+    JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCAL_CART as string) as string) :
+    {
+        productsSelected: [],
+        totalCost: 0,
+        totalProductSelected: 0
+    };
 
 export function cartReducer(state = INITIAL_STATE, action: CartActions) {
     let index;
@@ -41,6 +44,8 @@ export function cartReducer(state = INITIAL_STATE, action: CartActions) {
                     return acc + crr.quantity
                 }, 0)
             }
+
+            localStorage.setItem(process.env.REACT_APP_LOCAL_CART as string, JSON.stringify(valueToReturn));
             return valueToReturn;
         
         case CartActionsTypes.PLUS_ONE:
@@ -60,6 +65,7 @@ export function cartReducer(state = INITIAL_STATE, action: CartActions) {
                     totalCost: state.totalCost + price,
                     totalProductSelected: state.totalProductSelected + 1                    
                 };
+                localStorage.setItem(process.env.REACT_APP_LOCAL_CART as string, JSON.stringify(valueToReturn));
                 return valueToReturn;
             }
 
@@ -82,6 +88,7 @@ export function cartReducer(state = INITIAL_STATE, action: CartActions) {
                     totalProductSelected: state.totalProductSelected - 1
                 };
 
+                localStorage.setItem(process.env.REACT_APP_LOCAL_CART as string, JSON.stringify(valueToReturn));
                 return valueToReturn;
             }
 
@@ -106,6 +113,7 @@ export function cartReducer(state = INITIAL_STATE, action: CartActions) {
                         return acc + crr.quantity
                     }, 0)
                 };
+                localStorage.setItem(process.env.REACT_APP_LOCAL_CART as string, JSON.stringify(valueToReturn));
                 return valueToReturn;
             }
 
