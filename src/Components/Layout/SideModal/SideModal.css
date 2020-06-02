@@ -40,7 +40,7 @@
         width: 30%;
     }
 }
-@media only screen and (min-width : 1360px) {
+@media only screen and (min-width : 1480px) {
     .side-modal {
         width: 25%;
     }
