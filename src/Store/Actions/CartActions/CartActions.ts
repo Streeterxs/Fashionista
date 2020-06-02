@@ -20,3 +20,17 @@ export function plusOneProduct(productSku: string) {
         sku: productSku
     }
 }
+
+export function minusOneProduct(productSku: string) {
+    return {
+        type: CartActionsTypes.MINUS_ONE,
+        sku: productSku
+    }
+}
+
+export function removeProduct(productSku: string) {
+    return {
+        type: CartActionsTypes.REMOVE_PRODUCT,
+        sku: productSku
+    }
+}

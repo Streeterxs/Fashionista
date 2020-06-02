@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { Header } from "./Header";
 import SideSearch from './SideModal/SideModal';
@@ -8,6 +8,10 @@ import Cart from './Cart/Cart';
 const Layout = ({children}: any) => {
     const [showSearch, setShowSearch] = useState(false);
     const [showCart, setShowCart] = useState(false);
+
+    useEffect(() => {
+        console.log('layout rendered');
+    });
 
     const handleClickBackdrop = (setFn: (bool: boolean) => void) => {
         setFn(false);

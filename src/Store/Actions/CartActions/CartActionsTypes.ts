@@ -1,4 +1,6 @@
 export enum CartActionsTypes {
-    ADD_TO_CART,
-    PLUS_ONE
+    ADD_TO_CART='ADD_TO_CART',
+    PLUS_ONE='PLUS_ONE',
+    MINUS_ONE='MINUS_ONE',
+    REMOVE_PRODUCT='REMOVE_PRODUCT'
 }

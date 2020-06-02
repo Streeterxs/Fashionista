@@ -21,8 +21,8 @@ const DetailsPage = () => {
     const {identifier} = useParams();
 
     const dispatch = useDispatch();
-    const {productsReducer} = useSelector((state: RootState) => {
-        return state
+    const productsReducer = useSelector(({productsReducer}: RootState) => {
+        return productsReducer
     });
 
     useEffect(() => {
@@ -30,7 +30,7 @@ const DetailsPage = () => {
             await dispatch(await setProductsApi())
         };
 
-        if ((productsReducer.productList).length <= 0) {
+        if ((productsReducer.productList)?.length <= 0) {
             fetchProducts();
             return;
         }
@@ -48,7 +48,7 @@ const DetailsPage = () => {
             setShowError(true);
             return;
         }
-
+        console.log('productSelected: ', productSelected);
         dispatch(addToCart(productSelected));
     }
 

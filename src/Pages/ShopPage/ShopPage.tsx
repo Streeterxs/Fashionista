@@ -8,13 +8,11 @@ import { setProductsApi } from '../../Store/Actions/ProductsActions/ProductsActi
 const ShopPage = () => {
     const dispatch = useDispatch();
 
-    const {productsReducer} = useSelector((state: RootState) => {
-        console.log('state');
-        return state
+    const productsReducer = useSelector((state: RootState) => {
+        return state.productsReducer
     });
     
     useEffect(() => {
-        console.log('rendered');
         const fetch = async () => {
             await dispatch(await setProductsApi());
         };

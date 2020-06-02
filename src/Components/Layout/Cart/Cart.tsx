@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useCallback, useEffect } from 'react';
 
 import SideModal from "../SideModal/SideModal";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../../Store/store';
 import { SelectedProducts } from './SelectedProducts';
+import { plusOneProduct, minusOneProduct, removeProduct } from '../../../Store/Actions/CartActions/CartActions';
 
 
 type FooterCartModalProps = {
@@ -33,7 +34,20 @@ type Cart = {
     closeCart: () =>  void
 };
 const Cart = ({showCart, closeCart}: Cart) => {
-    const {cartReducer} = useSelector((state: RootState) => state);
+    const cartReducer = useSelector(({cartReducer}: RootState) => cartReducer);
+    const dispatch = useDispatch();
+
+    const productPlusClickHandler = (productSku: string) => {
+        dispatch(plusOneProduct(productSku));
+    }
+
+    const productMinusClickHandler = (productSku: string) => {
+        dispatch(minusOneProduct(productSku));
+    }
+
+    const productRemoveClickHandler = (productSku: string) => {
+        dispatch(removeProduct(productSku));
+    }
 
     return (
         <SideModal
@@ -41,13 +55,20 @@ const Cart = ({showCart, closeCart}: Cart) => {
             closeModal={closeCart}
             headerContent={<HeaderCartModal totalItems={cartReducer?.totalProductSelected}/>}
             footer={<FooterCartModal totalValue={cartReducer?.totalCost}/>}>
-            {
-                cartReducer?.productsSelected.length > 0 ? 
-                <SelectedProducts selectedProducts={cartReducer?.productsSelected}/> :
-                <div>
-                    Sacola está vazia.
-                </div>
-            }
+            <> 
+                <SelectedProducts
+                    productRemoveClick={useCallback(productRemoveClickHandler, [productRemoveClickHandler])}
+                    productMinusClick={useCallback(productMinusClickHandler, [productMinusClickHandler])}
+                    productPlusClick={useCallback(productPlusClickHandler, [productPlusClickHandler])}
+                    selectedProducts={cartReducer?.productsSelected}/>
+                {
+                    cartReducer?.productsSelected.length === 0 ? 
+                        <div>
+                            Sacola está vazia.
+                        </div> :
+                        null
+                }
+            </>
         </SideModal>
     )
 };

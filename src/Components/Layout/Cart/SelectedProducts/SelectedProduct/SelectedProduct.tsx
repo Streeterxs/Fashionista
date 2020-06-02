@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusSquare, faMinusSquare } from '@fortawesome/free-regular-svg-icons'
@@ -10,15 +10,18 @@ import './SelectedProduct.css'
 
 type SelectedProductProps = {
     selectedProduct: ProductSelected;
+    plusClick: (productSku: string) => void;
+    minusClick: (productSku: string) =>  void;
+    removeClick: (productSku: string) =>  void;
 }
-const SelectedProduct = ({selectedProduct}: SelectedProductProps) => {
+const SelectedProduct = ({selectedProduct, plusClick, minusClick, removeClick}: SelectedProductProps) => {
     return (
         <div className="display-flex">
             <div className="flex-basis-25">
                 <picture className="selected-product__image-wrapper">
                     <img className="selected-product__image" src={selectedProduct.image} alt={selectedProduct.name}/>
                 </picture>
-                <p className="mar-0 remover-button">Remover item</p>
+                <p className="mar-0 remover-button" onClick={() => removeClick(selectedProduct.sizeSelected.sku)}>Remover item</p>
             </div>
             <div className="flex-basis-50 product-quantity__manager">
                 <p className="mar-0 product-name">
@@ -28,13 +31,13 @@ const SelectedProduct = ({selectedProduct}: SelectedProductProps) => {
                     Tam.:{selectedProduct.sizeSelected.size}
                 </p>
                 <div className="display-flex">
-                    <FontAwesomeIcon icon={faMinusSquare} className="button__qnt-manager"/>
+                    <FontAwesomeIcon onClick={() => minusClick(selectedProduct.sizeSelected.sku)} icon={faMinusSquare} className="button__qnt-manager"/>
 
                     <div className="marx-2">
                         {selectedProduct.quantity}
                     </div>
 
-                    <FontAwesomeIcon icon={faPlusSquare} className="button__qnt-manager"/>
+                    <FontAwesomeIcon onClick={() => plusClick(selectedProduct.sizeSelected.sku)} icon={faPlusSquare} className="button__qnt-manager"/>
                 </div>
             </div>
             <div className="flex-basis-25">
