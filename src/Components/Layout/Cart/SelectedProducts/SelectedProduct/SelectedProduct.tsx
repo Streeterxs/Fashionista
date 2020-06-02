@@ -40,7 +40,7 @@ const SelectedProduct = ({selectedProduct}: SelectedProductProps) => {
             <div className="flex-basis-25">
                 <p className="mar-0 price-regular center">
                     <b>
-                        {selectedProduct.regular_price}
+                        {selectedProduct.discount_percentage ? selectedProduct.discount_value : selectedProduct.regular_price}
                     </b>
                 </p>
                 <p className="mar-0 installments muted center">{selectedProduct.installments}</p>

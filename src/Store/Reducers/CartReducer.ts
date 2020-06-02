@@ -15,17 +15,20 @@ const INITIAL_STATE: CartState = {
 };
 
 export function cartReducer(state = INITIAL_STATE, action: CartActions) {
+    let index;
+    let price;
     switch (action.type) {
         case CartActionsTypes.ADD_TO_CART:
-            const index = state.productsSelected.findIndex(product => product.sizeSelected?.sku === action.productSelected?.sizeSelected.sku);
+            index = state.productsSelected.findIndex(product => product.sizeSelected?.sku === action.productSelected?.sizeSelected.sku);
 
             if (index >= 0) {
                 state.productsSelected[index].quantity++
             } else {
                 state.productsSelected.push(action.productSelected as ProductSelected);
             }
-
-            const price = formatedPriceStringToNumber((action.productSelected as ProductSelected).regular_price);
+            price = (action.productSelected as ProductSelected).discount_percentage ?
+                formatedPriceStringToNumber((action.productSelected as ProductSelected).discount_value) :
+                formatedPriceStringToNumber((action.productSelected as ProductSelected).regular_price);
 
             return {
                 ...state,
@@ -34,6 +37,27 @@ export function cartReducer(state = INITIAL_STATE, action: CartActions) {
                     return acc + crr.quantity
                 }, 0)
             };
+        
+        case CartActionsTypes.PLUS_ONE:
+            index = state.productsSelected.findIndex(product => product.sizeSelected?.sku === action.sku);
+            if (index >= 0) {
+                state.productsSelected[index].quantity++
+                price = state.productsSelected[index].discount_percentage ?
+                    formatedPriceStringToNumber(state.productsSelected[index].discount_value) :
+                    formatedPriceStringToNumber(state.productsSelected[index].regular_price);
+                
+                console.log('price: ', price);
+
+                return {
+                    ...state,
+                    totalCost: state.totalCost + price,
+                    totalProductSelected: state.productsSelected.reduce((acc, crr) => {
+                        return acc + crr.quantity
+                    }, 0)
+                };
+            }
+
+            return state;
             
         default:
             return state;
@@ -44,3 +68,10 @@ export function cartReducer(state = INITIAL_STATE, action: CartActions) {
 function formatedPriceStringToNumber(formatedString: string) {
     return +formatedString.split(' ')[1].replace(',', '.')
 }
+
+
+export const handleDiscount = (regularPrice: string, discountPercent: string) => {
+    const discountToNumber = (+discountPercent.replace('%', '.')) / 100;
+    const priceToNumber = + regularPrice.split(' ')[1].replace(',', '.');
+    return priceToNumber * (1 - discountToNumber);
+};

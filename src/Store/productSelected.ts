@@ -14,4 +14,5 @@ export interface ProductSelected {
     installments: string;
     sizeSelected: Size;
     quantity: number;
+    discount_value: string
 }

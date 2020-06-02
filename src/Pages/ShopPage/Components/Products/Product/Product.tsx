@@ -10,10 +10,7 @@ type ProductProps = {
 const Product = ({product}: ProductProps) => {
     const handleDiscount = (regularPrice: string, discountPercent: string) => {
         const discountToNumber = (+discountPercent.replace('%', '.')) / 100;
-        console.log('discountToNumber: ', discountToNumber);
         const priceToNumber = + regularPrice.split(' ')[1].replace(',', '.');
-        console.log('priceToNumber: ', priceToNumber);
-        console.log('result: ', priceToNumber * (1 - discountToNumber));
         return priceToNumber * (1 - discountToNumber);
     };
 

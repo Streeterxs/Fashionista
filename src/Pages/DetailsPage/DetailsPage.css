@@ -21,3 +21,17 @@ button.add-cart__button {
     font-size: 0.8rem;
     color: red
 }
+
+.product__discount {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: #212529;
+    color: white;
+    padding: 0.05rem 0.2rem;
+}
+
+.discounted__price {
+    color: #a7a7a7;
+    text-decoration: line-through;
+}

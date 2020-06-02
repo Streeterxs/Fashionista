@@ -6,10 +6,12 @@ import { RootState } from '../../Store/store';
 import { setProductsApi, getProduct } from '../../Store/Actions';
 import { Product } from '../../Store/product';
 import { Sizes } from './Components';
-import './DetailsPage.css'
 import { Size } from '../../Store/size';
 import { ProductSelected } from '../../Store/productSelected';
 import { addToCart } from '../../Store/Actions/CartActions/CartActions';
+import { handleDiscount } from '../../Store/Reducers/CartReducer';
+
+import './DetailsPage.css'
 
 const DetailsPage = () => {
     const [productFinded, setProductFinded] = useState<Product | null>();
@@ -57,21 +59,52 @@ const DetailsPage = () => {
         setProductSelected({
             ...productCopy,
             sizeSelected: size,
-            quantity: 1
+            quantity: 1,
+            discount_value: productCopy.discount_percentage ?
+                `R$ ${Math.ceil(handleDiscount(productCopy.regular_price, productCopy.discount_percentage)).toFixed(2)}`:
+                ''
         });
     }
 
     return (
         <div className="display-flex flex-wrap-reverse justify-center pady-4">
-            <div className="marx-1">
+            <div className="marx-1 pos-relative">
                 <img className="image-detail" src={productFinded ? productFinded.image : ''}></img>
+                {
+                    productFinded && productFinded.discount_percentage ?
+                    <div className="product__discount">
+                        -{productFinded.discount_percentage}
+                    </div> :
+                    null
+                }
             </div>
             <div className="marx-1 flex-basis-25">
                 <div>
                     <h3 className="mar-1">
                         {productFinded ? productFinded.name : ''}
                     </h3>
-                    <p><b>{productFinded ? productFinded.regular_price : ''}</b> em até {productFinded ? productFinded.installments : ''}</p>
+                    {
+                        productFinded ?
+                        productFinded.discount_percentage ?
+
+                        <p className="mar-0">
+                            <b className="marr-1">
+                                <span className='marr-1 discounted__price'>
+                                    {productFinded.regular_price}
+                                </span>
+                                {`R$ ${(Math.ceil(handleDiscount(productFinded.regular_price, productFinded.discount_percentage))).toFixed(2).replace('.', ',')}`}
+                            </b>
+                            em até {productFinded ? productFinded.installments : ''}
+                        </p> :
+
+                        <p className="mar-0">
+                            <b className="marr-1">
+                                {productFinded.regular_price}
+                            </b>
+                            em até {productFinded ? productFinded.installments : ''}
+                        </p>:
+                        ''
+                    }
                 </div>
                 <p className="marb-0">Escolha o tamanho</p>
                 {
