@@ -16,3 +16,8 @@ button.add-cart__button {
     max-width: 100%;
     height: auto;
 }
+
+.warning {
+    font-size: 0.8rem;
+    color: red
+}

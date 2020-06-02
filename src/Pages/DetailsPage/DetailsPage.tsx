@@ -76,7 +76,7 @@ const DetailsPage = () => {
                 <p className="marb-0">Escolha o tamanho</p>
                 {
                     !productSelected && showError ? 
-                    <p className="mary-1">
+                    <p className="mary-1 warning">
                         É necessário escolher um tamanho
                     </p> :
                     null

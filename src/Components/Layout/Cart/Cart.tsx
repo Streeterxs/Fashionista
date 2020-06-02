@@ -5,6 +5,18 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../../Store/store';
 import { SelectedProducts } from './SelectedProducts';
 
+
+type FooterCartModalProps = {
+    totalValue: number;
+}
+const FooterCartModal = ({totalValue}: FooterCartModalProps) => {
+    return (
+        <b>
+            Subtotal - R$ {totalValue}
+        </b>
+    )
+}
+
 type HeaderCartModalProps = {
     totalItems: number;
 }
@@ -15,16 +27,20 @@ const HeaderCartModal = ({totalItems}: HeaderCartModalProps) => {
         </b>
     )
 };
+
 type Cart = {
     showCart: boolean,
     closeCart: () =>  void
 };
-
 const Cart = ({showCart, closeCart}: Cart) => {
     const {cartReducer} = useSelector((state: RootState) => state);
 
     return (
-        <SideModal showModal={showCart} closeModal={closeCart} headerContent={<HeaderCartModal totalItems={cartReducer?.totalProductSelected}/>}>
+        <SideModal
+            showModal={showCart}
+            closeModal={closeCart}
+            headerContent={<HeaderCartModal totalItems={cartReducer?.totalProductSelected}/>}
+            footer={<FooterCartModal totalValue={cartReducer?.totalCost}/>}>
             {
                 cartReducer?.productsSelected.length > 0 ? 
                 <SelectedProducts selectedProducts={cartReducer?.productsSelected}/> :

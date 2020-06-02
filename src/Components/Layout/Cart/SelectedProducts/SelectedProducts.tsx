@@ -12,7 +12,7 @@ const SelectedProducts = ({selectedProducts}: SelectedProductsProps) => {
         <ul className="selected-products__wrapper">
             {
                 selectedProducts.map((selectedProduct, index) => 
-                    <li key={index} className="mary-1">
+                    <li key={index} className="mary-1 sing-product">
                         <SelectedProduct selectedProduct={selectedProduct}/>
                     </li>
                 )

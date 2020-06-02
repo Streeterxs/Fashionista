@@ -10,10 +10,11 @@ type SideModalProps = {
     showModal: boolean,
     closeModal: () => void,
     headerContent: string | JSX.Element,
-    children?: string | JSX.Element
+    children?: string | JSX.Element,
+    footer?: string | JSX.Element
 };
 
-const SideModal = ({showModal, closeModal, headerContent, children}: SideModalProps) => {
+const SideModal = ({showModal, closeModal, headerContent, children, footer}: SideModalProps) => {
     return (
         <Backdrop show={showModal} clicked={closeModal}>
             <div className="side-modal-wrapper display-flex justify-end">
@@ -30,6 +31,11 @@ const SideModal = ({showModal, closeModal, headerContent, children}: SideModalPr
                     </div>
                     <div className="side-modal__body padx-2">
                         {!!children ? children : null}
+                    </div>
+                    <div className="side-modal__footer">
+                        {
+                            footer ? footer : null
+                        }
                     </div>
                 </div>
             </div>

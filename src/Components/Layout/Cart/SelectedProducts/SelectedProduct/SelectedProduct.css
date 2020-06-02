@@ -25,6 +25,6 @@ img.selected-product__image {
 
 .remover-button {
     font-size: 0.8rem;
-    color: red;
+    color: #cf3838;
     cursor: pointer;
 }
