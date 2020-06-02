@@ -1,0 +1,28 @@
+@media only screen and (min-width : 0px) {
+    .products__item {
+        flex-basis: 100%;
+    }
+}
+
+@media only screen and (min-width : 420px) {
+    .products__item {
+        flex-basis: 50%;
+    }
+}
+
+@media only screen and (min-width : 660px) {
+    .products__item {
+        flex-basis: 30%;
+    }
+
+}
+@media only screen and (min-width : 980px) {
+    .products__item {
+        flex-basis: 25%;
+    }
+}
+@media only screen and (min-width : 1480px) {
+    .products__item {
+        flex-basis: 20%;
+    }
+}

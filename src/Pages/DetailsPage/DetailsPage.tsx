@@ -78,7 +78,7 @@ const DetailsPage = () => {
                     null
                 }
             </div>
-            <div className="marx-1 flex-basis-25">
+            <div className="marx-1 details__manager-wrapper">
                 <div>
                     <h3 className="mar-1">
                         {productFinded ? productFinded.name : ''}

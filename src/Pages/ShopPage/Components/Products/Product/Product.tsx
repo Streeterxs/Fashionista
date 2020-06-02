@@ -18,7 +18,7 @@ const Product = ({product}: ProductProps) => {
         <Link to={`/details/${product.code_color}`}>
             <div className="product">
                 <div className="product__image-wrapper">
-                    <img className="product_image" src={product.image} alt={product.name}/>
+                    <img className="product_image" src={product.image ? product.image : 'https://via.placeholder.com/470x594/FFFFFF/?text=Imagem+Indispon%C3%ADvel'} alt={product.name}/>
                 </div>
                 <div>
                     <p className="mar-0 center">

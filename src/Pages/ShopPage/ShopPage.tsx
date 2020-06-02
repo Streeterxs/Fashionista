@@ -23,7 +23,12 @@ const ShopPage = () => {
         <div>
             {
                 productsReducer && (productsReducer.productList).length > 0 ?
-                <Products products={productsReducer.productList}/> :
+                <div className="padx-2 mary-2"> 
+                    <div className="muted">
+                        {productsReducer.productList.length} items
+                    </div>
+                    <Products products={productsReducer.productList}/>
+                </div> :
                 null
             }
         </div>

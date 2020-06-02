@@ -1,4 +1,4 @@
-.products__wrapper {
+.products-list__wrapper {
     list-style: none;
     display: flex;
     flex-direction: column;

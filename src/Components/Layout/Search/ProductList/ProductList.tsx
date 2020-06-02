@@ -10,7 +10,7 @@ type ProductListProps = {
 }
 const ProductList = ({productArray}: ProductListProps) => {
     return (
-        <ul className="products__wrapper">
+        <ul className="products-list__wrapper">
             {
                 productArray.map((product) => {
                     return (

@@ -3,6 +3,8 @@ import React, { useEffect } from 'react';
 import {Product} from './Product';
 import { Product as ProductValue} from '../../../../Store/product';
 
+import './Products.css';
+
 type ProductsProps = {
     products: ProductValue[]
 }
@@ -13,11 +15,11 @@ const Products = ({products}: ProductsProps) => {
     })
 
     return (
-        <div className="display-flex flex-wrap padx-4">
+        <div className="display-flex flex-wrap padx-4 products__wrapper">
             {
                 products && products.length > 0 ?
                 products.map((productValue, index) => 
-                <div className="flex-basis-25" key={index}>
+                <div className="products__item" key={index}>
                     <Product product={productValue}/>
                 </div>)
                     :
