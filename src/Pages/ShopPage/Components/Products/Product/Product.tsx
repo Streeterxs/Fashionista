@@ -8,6 +8,15 @@ type ProductProps = {
     product: ProductValue
 }
 const Product = ({product}: ProductProps) => {
+    const handleDiscount = (regularPrice: string, discountPercent: string) => {
+        const discountToNumber = (+discountPercent.replace('%', '.')) / 100;
+        console.log('discountToNumber: ', discountToNumber);
+        const priceToNumber = + regularPrice.split(' ')[1].replace(',', '.');
+        console.log('priceToNumber: ', priceToNumber);
+        console.log('result: ', priceToNumber * (1 - discountToNumber));
+        return priceToNumber * (1 - discountToNumber);
+    };
+
     return (
         <Link to={`/details/${product.code_color}`}>
             <div className="product">
@@ -15,14 +24,25 @@ const Product = ({product}: ProductProps) => {
                     <img className="product_image" src={product.image} alt={product.name}/>
                 </div>
                 <div>
-                    <p className="mar-0">
+                    <p className="mar-0 center">
                         <b>
                             {product.name}
                         </b>
                     </p>
-                    <p className="mar-0">
-                        {product.regular_price}
-                    </p>
+                    {
+                        product.discount_percentage ?
+
+                        <p className="mar-0 center">
+                            <span className='marr-1 price-cutted'>
+                                {product.regular_price}
+                            </span>
+                            {`R$ ${(Math.ceil(handleDiscount(product.regular_price, product.discount_percentage))).toFixed(2).replace('.', ',')}`}
+                        </p> :
+
+                        <p className="mar-0 center">
+                            {product.regular_price}
+                        </p>
+                    }
                 </div>
                 {
                     product && product.discount_percentage ?

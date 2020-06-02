@@ -12,7 +12,7 @@ type FooterCartModalProps = {
 const FooterCartModal = ({totalValue}: FooterCartModalProps) => {
     return (
         <b>
-            Subtotal - R$ {totalValue}
+            Subtotal - R$ {totalValue.toFixed(2).replace('.', ',')}
         </b>
     )
 }
