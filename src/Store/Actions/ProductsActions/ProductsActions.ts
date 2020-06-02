@@ -5,7 +5,8 @@ import { fetchProducts } from "../../../Services";
 export type ProductsActions = {
     type: ProductsActionsTypes,
     products?: Product[],
-    code_color?: string
+    code_color?: string,
+    name?: string
 }
 
 export const getProducts = () => {
@@ -33,5 +34,12 @@ export async function setProductsApi() {
     return {
         type: ProductsActionsTypes.SET_PRODUCTS_API,
         products
+    }
+}
+
+export function filterProducts(name: string) {
+    return {
+        type: ProductsActionsTypes.FILTER_PRODUCTS,
+        name
     }
 }

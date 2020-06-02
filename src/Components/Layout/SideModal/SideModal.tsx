@@ -32,11 +32,13 @@ const SideModal = ({showModal, closeModal, headerContent, children, footer}: Sid
                     <div className="side-modal__body padx-2">
                         {!!children ? children : null}
                     </div>
-                    <div className="side-modal__footer">
-                        {
-                            footer ? footer : null
-                        }
-                    </div>
+                    {
+                        footer ?
+                        <div className="side-modal__footer">
+                            {footer} 
+                        </div> :
+                        null
+                    }
                 </div>
             </div>
         </Backdrop>

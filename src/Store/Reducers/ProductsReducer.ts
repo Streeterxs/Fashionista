@@ -5,10 +5,12 @@ import { ProductsActions } from "../Actions/ProductsActions/ProductsActions";
 
 type ProductStore = {
     productList: Product[],
+    filteredProduct: Product[]
     productFinded?: Product
 }
 const INITIAL_STATE: ProductStore = {
-    productList: []
+    productList: [],
+    filteredProduct: []
 };
 
 export function productsReducer(state = INITIAL_STATE, action: ProductsActions) {
@@ -37,6 +39,15 @@ export function productsReducer(state = INITIAL_STATE, action: ProductsActions) 
                 ...state,
                 productList: action.products as Product[]
             };
+
+        case ProductsActionsTypes.FILTER_PRODUCTS:
+
+            return {
+                ...state,
+                filteredProduct: state.productList.filter(product => 
+                    action.name && action.name.length > 0 ? product.name.trim().toLocaleLowerCase().includes(action.name.trim().toLocaleLowerCase()) : false
+                )
+            }
     
         default:
             return state;

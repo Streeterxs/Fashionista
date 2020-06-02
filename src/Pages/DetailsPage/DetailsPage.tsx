@@ -94,19 +94,23 @@ const DetailsPage = () => {
                                 </span>
                                 {`R$ ${(Math.ceil(handleDiscount(productFinded.regular_price, productFinded.discount_percentage))).toFixed(2).replace('.', ',')}`}
                             </b>
-                            em até {productFinded ? productFinded.installments : ''}
+                            <b className="custom-muted">
+                                em até {productFinded ? productFinded.installments : ''}
+                            </b>
                         </p> :
 
                         <p className="mar-0">
                             <b className="marr-1">
                                 {productFinded.regular_price}
                             </b>
-                            em até {productFinded ? productFinded.installments : ''}
+                            <b className="custom-muted">
+                                em até {productFinded ? productFinded.installments : ''}
+                            </b>
                         </p>:
                         ''
                     }
                 </div>
-                <p className="marb-0">Escolha o tamanho</p>
+                <p className="marb-0 custom-muted">Escolha o tamanho</p>
                 {
                     !productSelected && showError ? 
                     <p className="mary-1 warning">

@@ -1,0 +1,11 @@
+.products__wrapper {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
+.sing-product {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    padding: 0.8rem 0;
+}
