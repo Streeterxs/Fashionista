@@ -6,6 +6,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../../Store/store';
 import { filterProducts } from '../../../Store';
 
+import './Search.css'
+
 const HeaderSearchModal = () => {
     return (
         <b>
@@ -30,13 +32,19 @@ const Search = ({showSearch, closeSearch}: SearchType) => {
 
     return (
         <SideModal showModal={showSearch} closeModal={closeSearch} headerContent={<HeaderSearchModal/>}>
-            <div>
-                <div>
-                    <input type="text" onChange={(event) => handleSearchKeyUp(event.target.value)}/>
+            <div className="search__content-wrapper">
+                <div className="search__wrapper">
+                    <input placeholder="Buscar por produto..." className="search__input" type="text" onChange={(event) => handleSearchKeyUp(event.target.value)}/>
                 </div>
-                <div>
-                    <ProductList productArray={productsReducer.filteredProduct}/>
-                </div>
+                {
+                    productsReducer.filteredProduct.length > 0 ?
+                    <div className="padx-2">
+                        <ProductList productArray={productsReducer.filteredProduct}/>
+                    </div> :
+                    <div className="search__text-wrapper">
+                        Nenhum produto encontrado
+                    </div>
+                }
             </div>
         </SideModal>
     )

@@ -29,7 +29,7 @@ const SideModal = ({showModal, closeModal, headerContent, children, footer}: Sid
                             {headerContent}
                         </p>
                     </div>
-                    <div className="side-modal__body padx-2">
+                    <div className="side-modal__body">
                         {!!children ? children : null}
                     </div>
                     {

@@ -6,6 +6,7 @@ import { RootState } from '../../../Store/store';
 import { SelectedProducts } from './SelectedProducts';
 import { plusOneProduct, minusOneProduct, removeProduct } from '../../../Store/Actions/CartActions/CartActions';
 
+import './Cart.css'
 
 type FooterCartModalProps = {
     totalValue: number;
@@ -55,7 +56,7 @@ const Cart = ({showCart, closeCart}: Cart) => {
             closeModal={closeCart}
             headerContent={<HeaderCartModal totalItems={cartReducer?.totalProductSelected}/>}
             footer={<FooterCartModal totalValue={cartReducer?.totalCost}/>}>
-            <> 
+            <div className="padx-2"> 
                 <SelectedProducts
                     productRemoveClick={useCallback(productRemoveClickHandler, [productRemoveClickHandler])}
                     productMinusClick={useCallback(productMinusClickHandler, [productMinusClickHandler])}
@@ -63,12 +64,12 @@ const Cart = ({showCart, closeCart}: Cart) => {
                     selectedProducts={cartReducer?.productsSelected}/>
                 {
                     cartReducer?.productsSelected.length === 0 ? 
-                        <div>
+                        <div className="cart__text-wrapper">
                             Sacola está vazia.
                         </div> :
                         null
                 }
-            </>
+            </div>
         </SideModal>
     )
 };
